@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mypanningpokeradmin.Interface.OnItemClickListener;
 import com.example.mypanningpokeradmin.Model.Groups;
+import com.example.mypanningpokeradmin.Model.Questions;
 import com.example.mypanningpokeradmin.R;
 import com.example.mypanningpokeradmin.Utils.Constant;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomePageRecyclerviewAdapter extends RecyclerView.Adapter<HomePageRecyclerviewAdapter.MyViewHolder> {
@@ -55,6 +57,7 @@ public class HomePageRecyclerviewAdapter extends RecyclerView.Adapter<HomePageRe
         bla = holder;
         holder.id.setText(groupsList.get(position).getId());
         holder.name.setText(groupsList.get(position).getName());
+        holder.switch_activity.setChecked(groupsList.get(position).isActive());
         if (groupsList.get(position).isActive()){
             holder.active.setText(R.string.active);
             holder.active.setTextColor(ContextCompat.getColor(context,R.color.colorPrimary));
@@ -97,32 +100,28 @@ public class HomePageRecyclerviewAdapter extends RecyclerView.Adapter<HomePageRe
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     final int position = getAdapterPosition();
+
+                    FirebaseDatabase mDatabase;
+                    DatabaseReference mRef;
+                    mDatabase = FirebaseDatabase.getInstance();
+                    mRef = mDatabase.getReference(Constant.GROUPS);
+
+                    mRef.child(groupsList.get(position).getKey()).child(Constant.ACTIVE).setValue(switch_activity.isChecked());
+                    switch_activity.setChecked(switch_activity.isChecked());
+
                     if (switch_activity.isChecked()){
-                        Toast.makeText(context,"on",Toast.LENGTH_SHORT).show();
-                        /*FirebaseDatabase mDatabase;
-                        final DatabaseReference mRef;
-                        mDatabase = FirebaseDatabase.getInstance();
-                        mRef = mDatabase.getReference(Constant.GROUPS);
-                        mRef.orderByKey().equalTo(Constant.GROUPS_KEY.get(position)).addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                                    String KEY = snap.getKey();
-                                    mRef.child(KEY).child(Constant.ACTIVE).setValue(true);
-                                    Toast.makeText(context, String.valueOf(position),Toast.LENGTH_SHORT).show();
-                                    onBindViewHolder(bla,position);
-                                }
-                            }
+                        active.setText(R.string.active);
+                        active.setTextColor(ContextCompat.getColor(context,R.color.colorPrimary));
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });*/
                     } else {
-                        Toast.makeText(context,"off",Toast.LENGTH_SHORT).show();
-
+                        active.setText(R.string.inactive);
+                        active.setTextColor(ContextCompat.getColor(context,R.color.colorAccent));
                     }
+
+                    /*List<Questions> groupsQuestion = new ArrayList<>();
+
+                    mRef = mDatabase.getReference(Constant.QUESTIONS);
+                    mRef.orderByValue().equalTo()*/
                 }
             });
         }

@@ -22,6 +22,4 @@ public class Constant {
     public static final String ACTIVE = "active";
     public static final String ACTIVE_TIME = "active_time";
     public static Groups SELECTED_GROUP;
-    public static List<String> GROUPS_KEY;
-
 }

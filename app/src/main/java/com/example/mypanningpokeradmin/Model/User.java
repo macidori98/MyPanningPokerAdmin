@@ -1,7 +1,7 @@
 package com.example.mypanningpokeradmin.Model;
 
 public class User {
-    private String id;
+    private String id;//key
     private String name;
 
     public User(String id, String name) {

@@ -64,7 +64,7 @@ public class AddQuestionDialog extends AppCompatDialogFragment {
                 Questions questions = new Questions(ID, Constant.SELECTED_GROUP.getId(), q, "20","30");
                 //Groups groups = new Groups(id, name, false, Integer.valueOf(time));
                 listener.applyQuestions(questions);
-                mRef.child(mRef.push().getKey()).setValue(questions);
+                mRef.child(ID).setValue(questions);
                 Toast.makeText(getContext(), R.string.question_added, Toast.LENGTH_SHORT).show();
             }
         });

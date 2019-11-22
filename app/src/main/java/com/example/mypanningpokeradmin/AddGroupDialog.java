@@ -58,7 +58,7 @@ public class AddGroupDialog extends AppCompatDialogFragment {
                 String name = group_name.getText().toString();
                 String time = group_question_time.getText().toString();
                 String KEY = mRef.push().getKey();
-                Groups groups = new Groups(id, name, false, Integer.valueOf(time));
+                Groups groups = new Groups(id, name, false, Integer.valueOf(time), KEY);
                 listener.applyGroups(groups);
                 mRef.child(KEY).setValue(groups);
                 //Constant.GROUPS_KEY.add(KEY);

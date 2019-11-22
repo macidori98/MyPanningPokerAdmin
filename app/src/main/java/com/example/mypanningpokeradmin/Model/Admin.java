@@ -5,7 +5,7 @@ public class Admin {
     private String name;
 
     public Admin(String id, String name) {
-        this.id = id;
+        this.id = id;//key
         this.name = name;
     }
 

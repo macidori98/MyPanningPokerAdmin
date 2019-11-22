@@ -1,7 +1,7 @@
 package com.example.mypanningpokeradmin.Model;
 
 public class Questions {
-    private String id;
+    private String id;//key
     private String group_id;
     private String question;
     private String date_from;

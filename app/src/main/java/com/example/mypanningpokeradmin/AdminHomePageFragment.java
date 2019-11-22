@@ -88,18 +88,16 @@ public class AdminHomePageFragment extends Fragment implements AddGroupsDialogLi
     }
 
     private void getGroups(){
-        Log.i("FASZOM", "blaaaa");
-
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Constant.GROUPS_KEY = new ArrayList<>();
                 for(DataSnapshot groups: dataSnapshot.getChildren()){
                     String name = groups.child(Constant.NAME).getValue().toString();
                     String id = groups.child(Constant.ID).getValue().toString();
                     boolean active = Boolean.valueOf(groups.child(Constant.ACTIVE).getValue().toString());
                     int time = Integer.valueOf(groups.child(Constant.ACTIVE_TIME).getValue().toString());
-                    Groups groupsModel = new Groups(id,name, active, time);
+                    String key = groups.getKey();
+                    Groups groupsModel = new Groups(id,name, active, time,key);
                     //Constant.GROUPS_KEY.add(groups.getKey());
                     groupsList.add(groupsModel);
                 }
