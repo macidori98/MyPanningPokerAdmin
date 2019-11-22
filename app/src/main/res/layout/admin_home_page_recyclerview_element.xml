@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linearlayout_hommepage"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="100dp">
+    <TextView
+        android:id="@+id/textView_admin_home_page_recyclerview_group_id"
+        android:layout_width="match_parent"
+        android:paddingTop="@dimen/dp15"
+        android:paddingStart="@dimen/dp15"
+        android:paddingEnd="@dimen/dp15"
+        android:textSize="@dimen/sp20"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textView_admin_home_page_recyclerview_group_name"
+        android:paddingStart="@dimen/dp15"
+        android:paddingEnd="@dimen/dp15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/textView_admin_home_page_recyclerview_group_active"
+        android:paddingStart="@dimen/dp15"
+        android:paddingEnd="@dimen/dp15"
+        android:paddingBottom="@dimen/dp15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <Switch
+        android:id="@+id/switch_set_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_toStartOf="@id/linearlayout_hommepage"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"/>
+
+
+</RelativeLayout>

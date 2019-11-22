@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MyPanningPokerAdmin</string>
+    <string name="admin_login_editText_name">Enter your name</string>
+    <string name="admin_login_textView_app_name">PlanningPoker Admin</string>
+    <string name="admin_login_login">Login</string>
+
+    <string name="back_button_press">Please click BACK again to exit!</string>
+
+    <string name="success">Success</string>
+    <string name="name_fail">You have to enter at least 4 characters</string>
+
+    <string name="add_group_id">Enter group ID</string>
+    <string name="add_group_name">Enter group name</string>
+    <string name="add_group_time">Enter question time</string>
+    <string name="group_added">Group added</string>
+    <string name="question_added">Question added</string>
+    <string name="add_question">Enter question</string>
+    <string name="active">Active</string>
+    <string name="inactive">Inactive</string>
+
+    <string name="colorPrimary">#008577</string>
+    <string name="colorPrimaryDark">#00574B</string>
+    <string name="colorAccent">#D81B60</string>
+</resources>
