@@ -1,4 +1,4 @@
-package com.example.mypanningpokeradmin;
+package com.example.mypanningpokeradmin.Fragment;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.mypanningpokeradmin.Interface.AddGroupsDialogListener;
 import com.example.mypanningpokeradmin.Model.Groups;
+import com.example.mypanningpokeradmin.R;
 import com.example.mypanningpokeradmin.Utils.Constant;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

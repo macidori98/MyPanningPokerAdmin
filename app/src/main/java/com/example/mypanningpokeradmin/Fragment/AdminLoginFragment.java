@@ -1,4 +1,4 @@
-package com.example.mypanningpokeradmin;
+package com.example.mypanningpokeradmin.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,10 +10,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.mypanningpokeradmin.Model.Admin;
+import com.example.mypanningpokeradmin.R;
 import com.example.mypanningpokeradmin.Utils.Constant;
 import com.example.mypanningpokeradmin.Utils.FragmentNavigation;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Objects;
 
 public class AdminLoginFragment extends Fragment {
+
     public static final String TAG = AdminLoginFragment.class.getSimpleName();
 
     private View view;

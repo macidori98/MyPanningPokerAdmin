@@ -1,13 +1,9 @@
-package com.example.mypanningpokeradmin;
+package com.example.mypanningpokeradmin.Fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.Switch;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +15,7 @@ import com.example.mypanningpokeradmin.Adapter.HomePageRecyclerviewAdapter;
 import com.example.mypanningpokeradmin.Interface.AddGroupsDialogListener;
 import com.example.mypanningpokeradmin.Interface.OnItemClickListener;
 import com.example.mypanningpokeradmin.Model.Groups;
+import com.example.mypanningpokeradmin.R;
 import com.example.mypanningpokeradmin.Utils.Constant;
 import com.example.mypanningpokeradmin.Utils.FragmentNavigation;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
