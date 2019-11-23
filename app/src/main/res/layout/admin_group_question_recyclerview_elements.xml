@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
-        android:paddingTop="@dimen/dp15"
-        android:paddingBottom="@dimen/dp15"
+        android:id="@+id/textView_admin_group_question_recyclerview_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:paddingStart="@dimen/dp15"
         android:paddingEnd="@dimen/dp15"
-        android:id="@+id/textView_admin_group_question_recyclerview_question"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:paddingTop="@dimen/dp15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/switch_set_activity_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/admin_group_question_recyclerview_element_active"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dp15"
+        android:paddingEnd="@dimen/dp15"
+        android:paddingBottom="@dimen/dp15"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_admin_group_question_recyclerview_question" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

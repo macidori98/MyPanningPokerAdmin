@@ -54,7 +54,6 @@ public class HomePageRecyclerviewAdapter extends RecyclerView.Adapter<HomePageRe
 
     @Override
     public void onBindViewHolder(@NonNull HomePageRecyclerviewAdapter.MyViewHolder holder, int position) {
-        bla = holder;
         holder.id.setText(groupsList.get(position).getId());
         holder.name.setText(groupsList.get(position).getName());
         holder.switch_activity.setChecked(groupsList.get(position).isActive());
@@ -118,8 +117,6 @@ public class HomePageRecyclerviewAdapter extends RecyclerView.Adapter<HomePageRe
                         active.setText(R.string.inactive);
                         active.setTextColor(ContextCompat.getColor(context,R.color.colorAccent));
                     }
-
-                    List<Questions> groupsQuestion = new ArrayList<>();
 
                     mRef2 = mDatabase.getReference(Constant.QUESTIONS);
                     mRef2.orderByChild(Constant.GROUP_ID).equalTo(groupsList.get(position).getId()).addListenerForSingleValueEvent(new ValueEventListener() {
