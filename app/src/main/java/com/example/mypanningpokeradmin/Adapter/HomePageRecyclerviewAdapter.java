@@ -1,16 +1,12 @@
 package com.example.mypanningpokeradmin.Adapter;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -18,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mypanningpokeradmin.Interface.OnItemClickListener;
 import com.example.mypanningpokeradmin.Model.Groups;
-import com.example.mypanningpokeradmin.Model.Questions;
 import com.example.mypanningpokeradmin.R;
 import com.example.mypanningpokeradmin.Utils.Constant;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +22,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomePageRecyclerviewAdapter extends RecyclerView.Adapter<HomePageRecyclerviewAdapter.MyViewHolder> {
@@ -35,8 +29,6 @@ public class HomePageRecyclerviewAdapter extends RecyclerView.Adapter<HomePageRe
     private Context context;
     private List<Groups> groupsList;
     private OnItemClickListener listener;
-    private HomePageRecyclerviewAdapter.MyViewHolder bla;
-
 
     public HomePageRecyclerviewAdapter(Context context, List<Groups> groupsList){
         this.context = context;
@@ -49,7 +41,6 @@ public class HomePageRecyclerviewAdapter extends RecyclerView.Adapter<HomePageRe
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.admin_home_page_recyclerview_element, parent, false);
         return new MyViewHolder(itemView, listener);
-
     }
 
     @Override

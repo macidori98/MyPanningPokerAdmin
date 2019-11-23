@@ -21,7 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class AddGroupDialog extends AppCompatDialogFragment {
-    private Groups groups;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
     private AddGroupsDialogListener listener;
@@ -57,13 +56,18 @@ public class AddGroupDialog extends AppCompatDialogFragment {
 
                 String id = group_id.getText().toString();
                 String name = group_name.getText().toString();
-                String time = group_question_time.getText().toString();
-                String KEY = mRef.push().getKey();
-                Groups groups = new Groups(id, name, false, Integer.valueOf(time), KEY);
-                listener.applyGroups(groups);
-                mRef.child(KEY).setValue(groups);
-                //Constant.GROUPS_KEY.add(KEY);
-                Toast.makeText(getContext(), R.string.group_added, Toast.LENGTH_SHORT).show();
+
+                if (isTextLengthOk(id) && isTextLengthOk(name)){
+                    String time = group_question_time.getText().toString();
+                    String KEY = mRef.push().getKey();
+                    Groups groups = new Groups(id, name, false, Integer.valueOf(time), KEY);
+                    listener.applyGroups(groups);
+                    mRef.child(KEY).setValue(groups);
+                    //Constant.GROUPS_KEY.add(KEY);
+                    Toast.makeText(getContext(), R.string.group_added, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(),R.string.name_fail,Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -72,4 +76,12 @@ public class AddGroupDialog extends AppCompatDialogFragment {
         this.listener = listener;
     }
 
+    private boolean isTextLengthOk(String string){
+        if (string.length() >= 4 ){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

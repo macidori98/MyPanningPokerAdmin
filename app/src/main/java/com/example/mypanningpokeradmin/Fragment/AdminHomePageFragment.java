@@ -62,7 +62,6 @@ public class AdminHomePageFragment extends Fragment implements AddGroupsDialogLi
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(VERTICAL);
         recyclerView_admin_home_page.setLayoutManager(linearLayoutManager);
-
         fab_add_groups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +74,6 @@ public class AdminHomePageFragment extends Fragment implements AddGroupsDialogLi
     @Override
     public void onResume() {
         super.onResume();
-
     }
 
     private void addGroup(){
@@ -95,7 +93,6 @@ public class AdminHomePageFragment extends Fragment implements AddGroupsDialogLi
                     int time = Integer.valueOf(groups.child(Constant.ACTIVE_TIME).getValue().toString());
                     String key = groups.getKey();
                     Groups groupsModel = new Groups(id,name, active, time,key);
-                    //Constant.GROUPS_KEY.add(groups.getKey());
                     groupsList.add(groupsModel);
                 }
                 mAdapter = new HomePageRecyclerviewAdapter(getContext(),groupsList);
@@ -104,7 +101,6 @@ public class AdminHomePageFragment extends Fragment implements AddGroupsDialogLi
                     public void onItemClick(int position) {
                         Constant.SELECTED_GROUP = groupsList.get(position);
                         FragmentNavigation.getInstance(getContext()).replaceFragment(new AdminGroupQuestionFragment(), R.id.fragment_content);
-                        //Toast.makeText(getContext(), "ide katt, majd question list", Toast.LENGTH_SHORT).show();
                     }
                 });
                 recyclerView_admin_home_page.setAdapter(mAdapter);

@@ -38,19 +38,15 @@ public class AdminLoginFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.admin_login_fragment, container, false);
-
         view = initializeElements(view);
-
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference(Constant.ADMIN_NAMES);
-
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         button_admin_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,11 +90,9 @@ public class AdminLoginFragment extends Fragment {
 
                 }
             });
-
         } else {
             Toast.makeText(getContext(), R.string.name_fail, Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private boolean isNameLengthOk(){

@@ -13,20 +13,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import com.example.mypanningpokeradmin.Interface.AddGroupsDialogListener;
 import com.example.mypanningpokeradmin.Interface.AddQuestionsDialogListener;
-import com.example.mypanningpokeradmin.Model.Groups;
 import com.example.mypanningpokeradmin.Model.Questions;
 import com.example.mypanningpokeradmin.R;
 import com.example.mypanningpokeradmin.Utils.Constant;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-/*this.id = id;
-        this.qroup_id = qroup_id;
-        this.question = question;
-        this.date_from = date_from;
-        this.date_until = date_until;*/
 
 public class AddQuestionDialog extends AppCompatDialogFragment {
 
@@ -61,12 +53,16 @@ public class AddQuestionDialog extends AppCompatDialogFragment {
                 mRef = mDatabase.getReference(Constant.QUESTIONS);
 
                 String q = question.getText().toString();
-                String ID = mRef.push().getKey();
-                Questions questions = new Questions(ID, Constant.SELECTED_GROUP.getId(), q, "20","30",Constant.SELECTED_GROUP.isActive());
-                //Groups groups = new Groups(id, name, false, Integer.valueOf(time));
-                listener.applyQuestions(questions);
-                mRef.child(ID).setValue(questions);
-                Toast.makeText(getContext(), R.string.question_added, Toast.LENGTH_SHORT).show();
+
+                if (isTextLengthOk(q)){
+                    String ID = mRef.push().getKey();
+                    Questions questions = new Questions(ID, Constant.SELECTED_GROUP.getId(), q, "20","30",Constant.SELECTED_GROUP.isActive());
+                    listener.applyQuestions(questions);
+                    mRef.child(ID).setValue(questions);
+                    Toast.makeText(getContext(), R.string.question_added, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(),R.string.name_fail, Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -75,4 +71,12 @@ public class AddQuestionDialog extends AppCompatDialogFragment {
         this.listener = listener;
     }
 
+    private boolean isTextLengthOk(String string){
+        if (string.length() >= 4 ){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

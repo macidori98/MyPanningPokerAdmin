@@ -61,7 +61,6 @@ public class AdminGroupQuestionFragment extends Fragment implements AddQuestions
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(VERTICAL);
         recyclerView_admin_group_questions.setLayoutManager(linearLayoutManager);
-
         fab_add_questions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
