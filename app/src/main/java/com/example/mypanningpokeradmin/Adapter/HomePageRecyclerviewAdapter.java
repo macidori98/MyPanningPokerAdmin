@@ -103,6 +103,7 @@ public class HomePageRecyclerviewAdapter extends RecyclerView.Adapter<HomePageRe
 
                     FirebaseDatabase mDatabase;
                     DatabaseReference mRef;
+                    final DatabaseReference mRef2;
                     mDatabase = FirebaseDatabase.getInstance();
                     mRef = mDatabase.getReference(Constant.GROUPS);
 
@@ -118,10 +119,23 @@ public class HomePageRecyclerviewAdapter extends RecyclerView.Adapter<HomePageRe
                         active.setTextColor(ContextCompat.getColor(context,R.color.colorAccent));
                     }
 
-                    /*List<Questions> groupsQuestion = new ArrayList<>();
+                    List<Questions> groupsQuestion = new ArrayList<>();
 
-                    mRef = mDatabase.getReference(Constant.QUESTIONS);
-                    mRef.orderByValue().equalTo()*/
+                    mRef2 = mDatabase.getReference(Constant.QUESTIONS);
+                    mRef2.orderByChild(Constant.GROUP_ID).equalTo(groupsList.get(position).getId()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                String key = snapshot.child(Constant.ID).getValue().toString();
+                                mRef2.child(key).child(Constant.ACTIVE).setValue(switch_activity.isChecked());
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                 }
             });
         }

@@ -61,7 +61,7 @@ public class AddQuestionDialog extends AppCompatDialogFragment {
 
                 String q = question.getText().toString();
                 String ID = mRef.push().getKey();
-                Questions questions = new Questions(ID, Constant.SELECTED_GROUP.getId(), q, "20","30");
+                Questions questions = new Questions(ID, Constant.SELECTED_GROUP.getId(), q, "20","30",Constant.SELECTED_GROUP.isActive());
                 //Groups groups = new Groups(id, name, false, Integer.valueOf(time));
                 listener.applyQuestions(questions);
                 mRef.child(ID).setValue(questions);

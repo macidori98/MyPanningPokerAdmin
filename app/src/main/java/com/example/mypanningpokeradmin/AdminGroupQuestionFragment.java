@@ -85,13 +85,12 @@ public class AdminGroupQuestionFragment extends Fragment implements AddQuestions
                 for (DataSnapshot q: dataSnapshot.getChildren()){
                     String groups_id = q.child(Constant.GROUP_ID).getValue().toString();
                     if (groups_id.equals(Constant.SELECTED_GROUP.getId())) {
-                        //String groups_id = q.child(Constant.SELECTED_GROUP.getId()).getValue().toString();
                         String id = q.child(Constant.ID).getValue().toString();
                         String question = q.child(Constant.QUESTION).getValue().toString();
                         String date_from = q.child(Constant.DATE_FROM).getValue().toString();
                         String date_until = q.child(Constant.DATE_UNTIL).getValue().toString();
-
-                        Questions questions = new Questions(id, groups_id, question, date_from, date_until);
+                        boolean active = Boolean.valueOf(q.child(Constant.ACTIVE).getValue().toString());
+                        Questions questions = new Questions(id, groups_id, question, date_from, date_until, active);
                         questionsList.add(questions);
                     }
                 }
