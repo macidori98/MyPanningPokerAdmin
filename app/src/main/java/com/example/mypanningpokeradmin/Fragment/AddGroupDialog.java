@@ -59,12 +59,15 @@ public class AddGroupDialog extends AppCompatDialogFragment {
 
                 if (isTextLengthOk(id) && isTextLengthOk(name)){
                     String time = group_question_time.getText().toString();
-                    String KEY = mRef.push().getKey();
-                    Groups groups = new Groups(id, name, false, Integer.valueOf(time), KEY);
-                    listener.applyGroups(groups);
-                    mRef.child(KEY).setValue(groups);
-                    //Constant.GROUPS_KEY.add(KEY);
-                    Toast.makeText(getContext(), R.string.group_added, Toast.LENGTH_SHORT).show();
+                    if (time.length() >= 1){
+                        String KEY = mRef.push().getKey();
+                        Groups groups = new Groups(id, name, false, Integer.valueOf(time), KEY);
+                        listener.applyGroups(groups);
+                        mRef.child(KEY).setValue(groups);
+                        Toast.makeText(getContext(), R.string.group_added, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), R.string.time_limit, Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     Toast.makeText(getContext(),R.string.name_fail,Toast.LENGTH_SHORT).show();
                 }

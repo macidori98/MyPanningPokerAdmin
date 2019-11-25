@@ -86,10 +86,9 @@ public class AdminGroupQuestionFragment extends Fragment implements AddQuestions
                     if (groups_id.equals(Constant.SELECTED_GROUP.getId())) {
                         String id = q.child(Constant.ID).getValue().toString();
                         String question = q.child(Constant.QUESTION).getValue().toString();
-                        String date_from = q.child(Constant.DATE_FROM).getValue().toString();
-                        String date_until = q.child(Constant.DATE_UNTIL).getValue().toString();
+                        int  active_time_limit = Integer.valueOf(q.child(Constant.ACTIVE_TIME_SECONDS).getValue().toString());
                         boolean active = Boolean.valueOf(q.child(Constant.ACTIVE).getValue().toString());
-                        Questions questions = new Questions(id, groups_id, question, date_from, date_until, active);
+                        Questions questions = new Questions(id, groups_id, question, active, active_time_limit);
                         questionsList.add(questions);
                     }
                 }

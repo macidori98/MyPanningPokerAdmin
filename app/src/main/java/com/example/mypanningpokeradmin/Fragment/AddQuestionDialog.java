@@ -25,7 +25,7 @@ public class AddQuestionDialog extends AppCompatDialogFragment {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
     private AddQuestionsDialogListener listener;
-    private EditText question;
+    private EditText question, active_time_seconds;
 
     public AddQuestionDialog(){}
 
@@ -36,6 +36,7 @@ public class AddQuestionDialog extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.add_question_dialog, null);
         question = view.findViewById(R.id.editText_add_question);
+        active_time_seconds = view.findViewById(R.id.editText_add_question_time);
         doSomething(builder,view);
         return builder.create();
     }
@@ -56,7 +57,17 @@ public class AddQuestionDialog extends AppCompatDialogFragment {
 
                 if (isTextLengthOk(q)){
                     String ID = mRef.push().getKey();
-                    Questions questions = new Questions(ID, Constant.SELECTED_GROUP.getId(), q, "20","30",Constant.SELECTED_GROUP.isActive());
+                    Questions questions;
+                    if (!active_time_seconds.getText().toString().equals("")) {
+                        questions = new Questions(ID, Constant.SELECTED_GROUP.getId(), q,
+                                Constant.SELECTED_GROUP.isActive(),
+                                Integer.valueOf(active_time_seconds.getText().toString()));
+                    }
+                    else {
+                        questions = new Questions(ID, Constant.SELECTED_GROUP.getId(), q,
+                                Constant.SELECTED_GROUP.isActive(),
+                                Constant.SELECTED_GROUP.getActive_time());
+                    }
                     listener.applyQuestions(questions);
                     mRef.child(ID).setValue(questions);
                     Toast.makeText(getContext(), R.string.question_added, Toast.LENGTH_SHORT).show();

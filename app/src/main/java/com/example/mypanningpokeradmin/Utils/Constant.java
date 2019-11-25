@@ -16,5 +16,6 @@ public class Constant {
     public static final String DATE_UNTIL = "date_until";
     public static final String ACTIVE = "active";
     public static final String ACTIVE_TIME = "active_time";
+    public static final String ACTIVE_TIME_SECONDS = "active_time_seconds";
     public static Groups SELECTED_GROUP;
 }

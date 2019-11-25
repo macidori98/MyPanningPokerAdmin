@@ -21,4 +21,6 @@
     <string name="colorPrimary">#008577</string>
     <string name="colorPrimaryDark">#00574B</string>
     <string name="colorAccent">#D81B60</string>
+
+    <string name="time_limit">You have to enter time limit in seconds</string>
 </resources>

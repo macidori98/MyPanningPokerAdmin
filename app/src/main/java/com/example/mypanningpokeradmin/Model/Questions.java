@@ -4,17 +4,15 @@ public class Questions {
     private String id;//key
     private String group_id;
     private String question;
-    private String date_from;
-    private String date_until;
     private boolean active;
+    private int active_time_seconds;
 
-    public Questions(String id, String group_id, String question, String date_from, String date_until, boolean active) {
+    public Questions(String id, String group_id, String question, boolean active, int active_time_seconds) {
         this.id = id;
         this.group_id = group_id;
         this.question = question;
-        this.date_from = date_from;
-        this.date_until = date_until;
         this.active = active;
+        this.active_time_seconds = active_time_seconds;
     }
 
     public String getId() {
@@ -27,14 +25,6 @@ public class Questions {
 
     public String getQuestion() {
         return question;
-    }
-
-    public String getDate_from() {
-        return date_from;
-    }
-
-    public String getDate_until() {
-        return date_until;
     }
 
     public boolean isActive() {
@@ -53,15 +43,15 @@ public class Questions {
         this.question = question;
     }
 
-    public void setDate_from(String date_from) {
-        this.date_from = date_from;
-    }
-
-    public void setDate_until(String date_until) {
-        this.date_until = date_until;
-    }
-
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public int getActive_time_seconds() {
+        return active_time_seconds;
+    }
+
+    public void setActive_time_seconds(int active_time_seconds) {
+        this.active_time_seconds = active_time_seconds;
     }
 }
