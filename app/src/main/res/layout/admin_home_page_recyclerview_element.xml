@@ -21,6 +21,7 @@
         <TextView
             android:id="@+id/textView_admin_home_page_recyclerview_group_id"
             android:layout_width="match_parent"
+            android:textColor="@color/text_color"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/dp15"
             android:paddingTop="@dimen/dp15"
@@ -30,6 +31,7 @@
         <TextView
             android:id="@+id/textView_admin_home_page_recyclerview_group_name"
             android:layout_width="match_parent"
+            android:textColor="@color/text_color"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/dp15"
             android:paddingEnd="@dimen/dp15" />
