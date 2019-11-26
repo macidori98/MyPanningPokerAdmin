@@ -32,17 +32,22 @@ public class AddGroupDialog extends AppCompatDialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState){
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.add_group_dialog, null);
+
         group_id = view.findViewById(R.id.editText_add_group_id);
         group_name = view.findViewById(R.id.editText_add_group_name);
         group_question_time = view.findViewById(R.id.editText_add_group_time);
+
         doSomething(builder,view);
+
         return builder.create();
     }
 
     private void doSomething(AlertDialog.Builder builder, View view){
+
         builder.setView(view).setTitle("Add group").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -59,15 +64,19 @@ public class AddGroupDialog extends AppCompatDialogFragment {
 
                 if (isTextLengthOk(id) && isTextLengthOk(name)){
                     String time = group_question_time.getText().toString();
+
                     if (time.length() >= 1){
                         String KEY = mRef.push().getKey();
                         Groups groups = new Groups(id, name, false, Integer.valueOf(time), KEY);
+
                         listener.applyGroups(groups);
                         mRef.child(KEY).setValue(groups);
+
                         Toast.makeText(getContext(), R.string.group_added, Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getContext(), R.string.time_limit, Toast.LENGTH_SHORT).show();
                     }
+
                 } else {
                     Toast.makeText(getContext(),R.string.name_fail,Toast.LENGTH_SHORT).show();
                 }

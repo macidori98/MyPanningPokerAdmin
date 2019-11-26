@@ -9,11 +9,25 @@
         android:id="@+id/textView_admin_group_question_recyclerview_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/sp20"
+        android:paddingStart="@dimen/dp15"
+        android:paddingTop="@dimen/dp15"
+        android:paddingEnd="@dimen/dp15"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/admin_group_question_recyclerview_element_active"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp20"
         android:paddingStart="@dimen/dp15"
         android:paddingEnd="@dimen/dp15"
-        android:paddingTop="@dimen/dp15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:paddingBottom="@dimen/dp15"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/textView_admin_group_question_recyclerview_question"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Switch
         android:id="@+id/switch_set_activity_question"
@@ -23,15 +37,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/admin_group_question_recyclerview_element_active"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/dp15"
-        android:paddingEnd="@dimen/dp15"
-        android:paddingBottom="@dimen/dp15"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_admin_group_question_recyclerview_question" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/question" />
 </androidx.constraintlayout.widget.ConstraintLayout>

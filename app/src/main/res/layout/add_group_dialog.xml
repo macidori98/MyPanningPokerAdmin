@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp10"
+    android:layout_marginStart="@dimen/dp10"
+    android:layout_marginBottom="@dimen/dp10"
+    android:layout_marginEnd="@dimen/dp10">
 
     <EditText
         android:id="@+id/editText_add_group_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginStart="@dimen/dp15"
+        android:layout_marginEnd="@dimen/dp15"
+        android:layout_marginBottom="@dimen/dp5"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/add_group_id" />
@@ -14,7 +22,10 @@
     <EditText
         android:id="@+id/editText_add_group_name"
         android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/dp15"
+        android:layout_marginEnd="@dimen/dp15"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp5"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/add_group_name" />
@@ -22,6 +33,9 @@
     <EditText
         android:id="@+id/editText_add_group_time"
         android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/dp15"
+        android:layout_marginEnd="@dimen/dp15"
+        android:layout_marginBottom="@dimen/dp5"
         android:layout_height="wrap_content"
         android:hint="@string/add_group_time"
         android:inputType="number"/>

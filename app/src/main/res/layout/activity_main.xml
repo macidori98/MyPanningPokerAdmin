@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:layout_marginTop="@dimen/dp10"
+    android:layout_marginStart="@dimen/dp10"
+    android:layout_marginBottom="@dimen/dp10"
+    android:layout_marginEnd="@dimen/dp10">
 
     <FrameLayout
         android:id="@+id/fragment_content"

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.mypanningpokeradmin.Fragment.AdminLoginFragment;
 import com.example.mypanningpokeradmin.MainActivity;
 import com.example.mypanningpokeradmin.R;
 
@@ -69,7 +70,7 @@ public class FragmentNavigation extends Fragment {
     public void onBackPressed(MainActivity activity) {
 
         // If Home page is open: double press exit:
-        /*if( getCurrentFragment(mMainActivityFragmentContainer) instanceof LoginFragment) {
+        if( getCurrentFragment(mMainActivityFragmentContainer) instanceof AdminLoginFragment) {
             doublePressExit(activity);
             return;
         }

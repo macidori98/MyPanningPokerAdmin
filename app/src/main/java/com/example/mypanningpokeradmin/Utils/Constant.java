@@ -12,8 +12,6 @@ public class Constant {
     public static final String QUESTIONS = "questions";
     public static final String QUESTION = "question";
     public static final String ID = "id";
-    public static final String DATE_FROM = "date_from";
-    public static final String DATE_UNTIL = "date_until";
     public static final String ACTIVE = "active";
     public static final String ACTIVE_TIME = "active_time";
     public static final String ACTIVE_TIME_SECONDS = "active_time_seconds";

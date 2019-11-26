@@ -76,6 +76,7 @@ public class AdminLoginFragment extends Fragment {
                             break;
                         }
                     }
+
                     if (!found) {
                         String admin_id = mRef.push().getKey();
                         Admin admin = new Admin(admin_id,Constant.CURRENT_USER);

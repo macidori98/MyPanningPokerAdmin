@@ -32,12 +32,16 @@ public class AddQuestionDialog extends AppCompatDialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState){
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.add_question_dialog, null);
+
         question = view.findViewById(R.id.editText_add_question);
         active_time_seconds = view.findViewById(R.id.editText_add_question_time);
+
         doSomething(builder,view);
+
         return builder.create();
     }
 
@@ -58,6 +62,7 @@ public class AddQuestionDialog extends AppCompatDialogFragment {
                 if (isTextLengthOk(q)){
                     String ID = mRef.push().getKey();
                     Questions questions;
+
                     if (!active_time_seconds.getText().toString().equals("")) {
                         questions = new Questions(ID, Constant.SELECTED_GROUP.getId(), q,
                                 Constant.SELECTED_GROUP.isActive(),
@@ -68,8 +73,10 @@ public class AddQuestionDialog extends AppCompatDialogFragment {
                                 Constant.SELECTED_GROUP.isActive(),
                                 Constant.SELECTED_GROUP.getActive_time());
                     }
+
                     listener.applyQuestions(questions);
                     mRef.child(ID).setValue(questions);
+
                     Toast.makeText(getContext(), R.string.question_added, Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(),R.string.name_fail, Toast.LENGTH_SHORT).show();

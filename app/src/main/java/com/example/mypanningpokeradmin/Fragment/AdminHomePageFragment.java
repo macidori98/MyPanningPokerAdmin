@@ -46,13 +46,16 @@ public class AdminHomePageFragment extends Fragment implements AddGroupsDialogLi
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.admin_home_page_fragment, container, false);
         recyclerView_admin_home_page = view.findViewById(R.id.admin_home_page_fragment_recyclerView);
+        fab_add_groups = view.findViewById(R.id.floatingActionButton_add_groups);
+
         mDatabase = FirebaseDatabase.getInstance();
+        mRef = mDatabase.getReference(Constant.GROUPS);
 
         groupsList = new ArrayList<>();
-        mRef = mDatabase.getReference(Constant.GROUPS);
         groupsList = new ArrayList<>();
-        fab_add_groups = view.findViewById(R.id.floatingActionButton_add_groups);
+
         getGroups();
+
         return view;
     }
 
@@ -87,14 +90,18 @@ public class AdminHomePageFragment extends Fragment implements AddGroupsDialogLi
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot groups: dataSnapshot.getChildren()){
+
                     String name = groups.child(Constant.NAME).getValue().toString();
                     String id = groups.child(Constant.ID).getValue().toString();
                     boolean active = Boolean.valueOf(groups.child(Constant.ACTIVE).getValue().toString());
                     int time = Integer.valueOf(groups.child(Constant.ACTIVE_TIME).getValue().toString());
                     String key = groups.getKey();
+
                     Groups groupsModel = new Groups(id,name, active, time,key);
+
                     groupsList.add(groupsModel);
                 }
+
                 mAdapter = new HomePageRecyclerviewAdapter(getContext(),groupsList);
                 mAdapter.setOnClickListener(new OnItemClickListener() {
                     @Override
@@ -103,6 +110,7 @@ public class AdminHomePageFragment extends Fragment implements AddGroupsDialogLi
                         FragmentNavigation.getInstance(getContext()).replaceFragment(new AdminGroupQuestionFragment(), R.id.fragment_content);
                     }
                 });
+
                 recyclerView_admin_home_page.setAdapter(mAdapter);
             }
 

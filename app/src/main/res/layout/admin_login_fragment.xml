@@ -5,24 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/textView_admin_login_app_name"
         android:layout_width="wrap_content"
-        android:textAlignment="center"
+        android:textColor="@color/text_color"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:textSize="@dimen/sp30"
+        android:layout_marginTop="156dp"
         android:text="@string/admin_login_textView_app_name"
+        android:textAlignment="center"
+        android:textSize="@dimen/sp30"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <EditText
         android:id="@+id/editText_admin_login_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
+        android:textColor="@color/text_color"
+        android:layout_marginTop="184dp"
         android:ems="10"
         android:hint="@string/admin_login_editText_name"
         android:inputType="textPersonName"
@@ -36,8 +39,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:text="@string/admin_login_login"
+        android:backgroundTint="@color/green"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_admin_login_name" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_admin_login_name"
+        app:layout_constraintVertical_bias="0.06" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

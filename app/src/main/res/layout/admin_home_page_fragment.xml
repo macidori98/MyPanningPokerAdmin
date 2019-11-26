@@ -17,6 +17,9 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        android:background="@color/light_coral"
+        app:srcCompat="@mipmap/addbutton"
+        app:maxImageSize="56dp"
+        android:backgroundTint="@color/green" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

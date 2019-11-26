@@ -47,13 +47,14 @@ public class HomePageRecyclerviewAdapter extends RecyclerView.Adapter<HomePageRe
     public void onBindViewHolder(@NonNull HomePageRecyclerviewAdapter.MyViewHolder holder, int position) {
         holder.id.setText(groupsList.get(position).getId());
         holder.name.setText(groupsList.get(position).getName());
+
         holder.switch_activity.setChecked(groupsList.get(position).isActive());
         if (groupsList.get(position).isActive()){
             holder.active.setText(R.string.active);
-            holder.active.setTextColor(ContextCompat.getColor(context,R.color.colorPrimary));
+            holder.active.setTextColor(ContextCompat.getColor(context,R.color.green));
         } else {
             holder.active.setText(R.string.inactive);
-            holder.active.setTextColor(ContextCompat.getColor(context,R.color.colorAccent));
+            holder.active.setTextColor(ContextCompat.getColor(context,R.color.red));
 
         }
     }
@@ -67,13 +68,13 @@ public class HomePageRecyclerviewAdapter extends RecyclerView.Adapter<HomePageRe
         public TextView id, name, active;
         public Switch switch_activity;
 
-
         public MyViewHolder(View view, final OnItemClickListener listener) {
             super(view);
             id = view.findViewById(R.id.textView_admin_home_page_recyclerview_group_id);
             name = view.findViewById(R.id.textView_admin_home_page_recyclerview_group_name);
             active = view.findViewById(R.id.textView_admin_home_page_recyclerview_group_active);
             switch_activity = view.findViewById(R.id.switch_set_activity);
+
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -102,11 +103,11 @@ public class HomePageRecyclerviewAdapter extends RecyclerView.Adapter<HomePageRe
 
                     if (switch_activity.isChecked()){
                         active.setText(R.string.active);
-                        active.setTextColor(ContextCompat.getColor(context,R.color.colorPrimary));
+                        active.setTextColor(ContextCompat.getColor(context,R.color.green));
 
                     } else {
                         active.setText(R.string.inactive);
-                        active.setTextColor(ContextCompat.getColor(context,R.color.colorAccent));
+                        active.setTextColor(ContextCompat.getColor(context,R.color.red));
                     }
 
                     mRef2 = mDatabase.getReference(Constant.QUESTIONS);
@@ -127,7 +128,6 @@ public class HomePageRecyclerviewAdapter extends RecyclerView.Adapter<HomePageRe
                 }
             });
         }
-
     }
 
     public void setOnClickListener(OnItemClickListener listener){

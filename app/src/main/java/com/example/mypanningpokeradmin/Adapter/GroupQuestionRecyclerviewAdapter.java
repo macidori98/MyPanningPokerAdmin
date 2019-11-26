@@ -49,10 +49,10 @@ public class GroupQuestionRecyclerviewAdapter extends RecyclerView.Adapter<Group
         holder.switch_set_activity_question.setChecked(questionsList.get(position).isActive());
         if (questionsList.get(position).isActive()){
             holder.active.setText(R.string.active);
-            holder.active.setTextColor(ContextCompat.getColor(context,R.color.colorPrimary));
+            holder.active.setTextColor(ContextCompat.getColor(context,R.color.green));
         } else {
             holder.active.setText(R.string.inactive);
-            holder.active.setTextColor(ContextCompat.getColor(context,R.color.colorAccent));
+            holder.active.setTextColor(ContextCompat.getColor(context,R.color.red));
 
         }
     }
@@ -68,9 +68,11 @@ public class GroupQuestionRecyclerviewAdapter extends RecyclerView.Adapter<Group
 
         public MyViewHolder(View view, final OnItemClickListener listener) {
             super(view);
+
             question = view.findViewById(R.id.textView_admin_group_question_recyclerview_question);
             switch_set_activity_question = view.findViewById(R.id.switch_set_activity_question);
             active = view.findViewById(R.id.admin_group_question_recyclerview_element_active);
+
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -99,11 +101,11 @@ public class GroupQuestionRecyclerviewAdapter extends RecyclerView.Adapter<Group
 
                     if (switch_set_activity_question.isChecked()){
                         active.setText(R.string.active);
-                        active.setTextColor(ContextCompat.getColor(context,R.color.colorPrimary));
+                        active.setTextColor(ContextCompat.getColor(context,R.color.green));
 
                     } else {
                         active.setText(R.string.inactive);
-                        active.setTextColor(ContextCompat.getColor(context,R.color.colorAccent));
+                        active.setTextColor(ContextCompat.getColor(context,R.color.red));
                     }
 
                     mRef2 = mDatabase.getReference(Constant.QUESTIONS);
@@ -124,7 +126,6 @@ public class GroupQuestionRecyclerviewAdapter extends RecyclerView.Adapter<Group
                 }
             });
         }
-
     }
 
     public void setOnClickListener(OnItemClickListener listener){

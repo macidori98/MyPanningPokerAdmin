@@ -51,7 +51,9 @@ public class AdminGroupQuestionFragment extends Fragment implements AddQuestions
         recyclerView_admin_group_questions = view.findViewById(R.id.admin_group_questions_recyclerview);
         fab_add_questions = view.findViewById(R.id.floatingActionButton_add_questions);
         questionsList = new ArrayList<>();
+
         getQuestions();
+
         return view;
     }
 
@@ -83,15 +85,19 @@ public class AdminGroupQuestionFragment extends Fragment implements AddQuestions
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot q: dataSnapshot.getChildren()){
                     String groups_id = q.child(Constant.GROUP_ID).getValue().toString();
+
                     if (groups_id.equals(Constant.SELECTED_GROUP.getId())) {
+
                         String id = q.child(Constant.ID).getValue().toString();
                         String question = q.child(Constant.QUESTION).getValue().toString();
                         int  active_time_limit = Integer.valueOf(q.child(Constant.ACTIVE_TIME_SECONDS).getValue().toString());
                         boolean active = Boolean.valueOf(q.child(Constant.ACTIVE).getValue().toString());
+
                         Questions questions = new Questions(id, groups_id, question, active, active_time_limit);
                         questionsList.add(questions);
                     }
                 }
+
                 mAdapter = new GroupQuestionRecyclerviewAdapter(getContext(),questionsList);
                 mAdapter.setOnClickListener(new OnItemClickListener() {
                     @Override
@@ -99,6 +105,7 @@ public class AdminGroupQuestionFragment extends Fragment implements AddQuestions
                         //Toast.makeText(getContext(), "ide katt, majd question list", Toast.LENGTH_SHORT).show();
                     }
                 });
+
                 recyclerView_admin_group_questions.setAdapter(mAdapter);
             }
 
