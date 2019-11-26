@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.mypanningpokeradmin.Fragment.AdminGroupQuestionFragment;
+import com.example.mypanningpokeradmin.Fragment.AdminHomePageFragment;
 import com.example.mypanningpokeradmin.Fragment.AdminLoginFragment;
 import com.example.mypanningpokeradmin.MainActivity;
 import com.example.mypanningpokeradmin.R;
@@ -75,16 +77,15 @@ public class FragmentNavigation extends Fragment {
             return;
         }
 
-        /*if( getCurrentFragment(mMainActivityFragmentContainer) instanceof RegistrationFragment) {
+        if( getCurrentFragment(mMainActivityFragmentContainer) instanceof AdminHomePageFragment) {
             popBackstack();
             return;
         }
 
-        if( getCurrentFragment(mMainActivityFragmentContainer) instanceof HideTreasureFragment
-                || getCurrentFragment(mMainActivityFragmentContainer) instanceof ClaimTreasureFragment) {
-            showHomeFragment();
+        if( getCurrentFragment(mMainActivityFragmentContainer) instanceof AdminGroupQuestionFragment) {
+            popBackstack();
             return;
-        }*/
+        }
 
         // Other cases:
         activity.moveTaskToBack(true);
