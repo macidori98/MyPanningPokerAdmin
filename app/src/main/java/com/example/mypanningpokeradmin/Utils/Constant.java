@@ -1,6 +1,7 @@
 package com.example.mypanningpokeradmin.Utils;
 
 import com.example.mypanningpokeradmin.Model.Groups;
+import com.example.mypanningpokeradmin.Model.Questions;
 
 
 public class Constant {
@@ -16,4 +17,10 @@ public class Constant {
     public static final String ACTIVE_TIME = "active_time";
     public static final String ACTIVE_TIME_SECONDS = "active_time_seconds";
     public static Groups SELECTED_GROUP;
+    public static Questions SELECTED_QUESTION;
+    public static final String ANSWERS = "answers";
+    public static final String ANSWER = "answer";
+    public static final String USERS = "users";
+    public static final String QUESTION_ID = "question_id";
+    public static final String USER_ID = "user_id";
 }

@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.mypanningpokeradmin.Fragment.AdminGroupQuestionFragment;
 import com.example.mypanningpokeradmin.Fragment.AdminHomePageFragment;
 import com.example.mypanningpokeradmin.Fragment.AdminLoginFragment;
+import com.example.mypanningpokeradmin.Fragment.AnswerFragment;
 import com.example.mypanningpokeradmin.MainActivity;
 import com.example.mypanningpokeradmin.R;
 
@@ -83,6 +84,11 @@ public class FragmentNavigation extends Fragment {
         }
 
         if( getCurrentFragment(mMainActivityFragmentContainer) instanceof AdminGroupQuestionFragment) {
+            popBackstack();
+            return;
+        }
+
+        if( getCurrentFragment(mMainActivityFragmentContainer) instanceof AnswerFragment) {
             popBackstack();
             return;
         }

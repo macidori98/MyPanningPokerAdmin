@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/dp10"
+    android:layout_marginEnd="@dimen/dp10"
+    android:layout_marginBottom="@dimen/dp10"
+    android:layout_marginTop="@dimen/dp10">
+
+    <TextView
+        android:id="@+id/textView_answers_fragment_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp10"
+        android:textAlignment="center"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/sp20" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_answers_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

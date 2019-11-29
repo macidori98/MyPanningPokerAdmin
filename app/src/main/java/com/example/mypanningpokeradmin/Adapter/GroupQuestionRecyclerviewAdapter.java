@@ -44,7 +44,7 @@ public class GroupQuestionRecyclerviewAdapter extends RecyclerView.Adapter<Group
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GroupQuestionRecyclerviewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GroupQuestionRecyclerviewAdapter.MyViewHolder holder, final int position) {
         holder.question.setText(questionsList.get(position).getQuestion());
         holder.switch_set_activity_question.setChecked(questionsList.get(position).isActive());
         if (questionsList.get(position).isActive()){
@@ -53,8 +53,28 @@ public class GroupQuestionRecyclerviewAdapter extends RecyclerView.Adapter<Group
         } else {
             holder.active.setText(R.string.inactive);
             holder.active.setTextColor(ContextCompat.getColor(context,R.color.red));
-
+            //deleteElements(position);
         }
+    }
+
+    private void deleteElements(final int position){
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        final DatabaseReference mRefAnswers = mDatabase.getReference(Constant.ANSWER);
+        mRefAnswers.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ans : dataSnapshot.getChildren()){
+                    if (ans.child(Constant.QUESTION_ID).getValue().toString().equals(questionsList.get(position).getId())){
+                        mRefAnswers.child(ans.getKey()).removeValue();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -106,6 +126,7 @@ public class GroupQuestionRecyclerviewAdapter extends RecyclerView.Adapter<Group
                     } else {
                         active.setText(R.string.inactive);
                         active.setTextColor(ContextCompat.getColor(context,R.color.red));
+                        deleteElements(getAdapterPosition());
                     }
 
                     mRef2 = mDatabase.getReference(Constant.QUESTIONS);
@@ -123,6 +144,7 @@ public class GroupQuestionRecyclerviewAdapter extends RecyclerView.Adapter<Group
 
                         }
                     });
+
                 }
             });
         }
@@ -131,5 +153,6 @@ public class GroupQuestionRecyclerviewAdapter extends RecyclerView.Adapter<Group
     public void setOnClickListener(OnItemClickListener listener){
         this.listener = listener;
     }
+
 
 }
