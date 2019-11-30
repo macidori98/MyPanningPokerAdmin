@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/sp20"
         android:paddingStart="@dimen/dp15"
+        android:textStyle="bold"
         android:paddingEnd="@dimen/dp15"
         android:paddingBottom="@dimen/dp15"
         app:layout_constraintBottom_toBottomOf="parent"

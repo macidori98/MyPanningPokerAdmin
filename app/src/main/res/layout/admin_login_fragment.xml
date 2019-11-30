@@ -10,6 +10,7 @@
         android:id="@+id/textView_admin_login_app_name"
         android:layout_width="wrap_content"
         android:textColor="@color/text_color"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_marginTop="156dp"
         android:text="@string/admin_login_textView_app_name"

@@ -22,6 +22,7 @@
             android:id="@+id/textView_admin_home_page_recyclerview_group_id"
             android:layout_width="match_parent"
             android:textColor="@color/text_color"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/dp15"
             android:paddingTop="@dimen/dp15"
