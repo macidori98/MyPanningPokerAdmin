@@ -40,12 +40,12 @@ public class AddQuestionDialog extends AppCompatDialogFragment {
         question = view.findViewById(R.id.editText_add_question);
         active_time_seconds = view.findViewById(R.id.editText_add_question_time);
 
-        doSomething(builder,view);
+        addNewQuestion(builder,view);
 
         return builder.create();
     }
 
-    private void doSomething(AlertDialog.Builder builder, View view){
+    private void addNewQuestion(AlertDialog.Builder builder, View view){
         builder.setView(view).setTitle("Add question").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

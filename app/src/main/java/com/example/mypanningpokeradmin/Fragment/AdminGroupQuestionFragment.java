@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,7 +52,6 @@ public class AdminGroupQuestionFragment extends Fragment implements AddQuestions
         recyclerView_admin_group_questions = view.findViewById(R.id.admin_group_questions_recyclerview);
         fab_add_questions = view.findViewById(R.id.floatingActionButton_add_questions);
         questionsList = new ArrayList<>();
-
         getQuestions();
 
         return view;
@@ -109,10 +106,7 @@ public class AdminGroupQuestionFragment extends Fragment implements AddQuestions
                         FragmentNavigation.getInstance(getContext()).replaceFragment(new AnswerFragment(), R.id.fragment_content);
                     }
                 });
-
                 recyclerView_admin_group_questions.setAdapter(mAdapter);
-
-
             }
 
             @Override
@@ -122,6 +116,10 @@ public class AdminGroupQuestionFragment extends Fragment implements AddQuestions
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
     @Override
     public void applyQuestions(Questions questions) {

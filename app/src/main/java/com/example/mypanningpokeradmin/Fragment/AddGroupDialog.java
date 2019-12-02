@@ -41,12 +41,12 @@ public class AddGroupDialog extends AppCompatDialogFragment {
         group_name = view.findViewById(R.id.editText_add_group_name);
         group_question_time = view.findViewById(R.id.editText_add_group_time);
 
-        doSomething(builder,view);
+        addNewGroup(builder,view);
 
         return builder.create();
     }
 
-    private void doSomething(AlertDialog.Builder builder, View view){
+    private void addNewGroup(AlertDialog.Builder builder, View view){
 
         builder.setView(view).setTitle("Add group").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override

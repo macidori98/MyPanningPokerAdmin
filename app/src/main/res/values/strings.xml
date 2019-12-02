@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyPanningPokerAdmin</string>
+    <string name="app_name">MyPlanningPokerAdmin</string>
     <string name="admin_login_editText_name">Enter your name</string>
     <string name="admin_login_textView_app_name">PlanningPoker Admin</string>
     <string name="admin_login_login">Login</string>

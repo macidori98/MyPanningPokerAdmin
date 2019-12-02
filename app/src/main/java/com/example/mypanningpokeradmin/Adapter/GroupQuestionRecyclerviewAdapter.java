@@ -44,7 +44,7 @@ public class GroupQuestionRecyclerviewAdapter extends RecyclerView.Adapter<Group
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GroupQuestionRecyclerviewAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final GroupQuestionRecyclerviewAdapter.MyViewHolder holder, final int position) {
         holder.question.setText(questionsList.get(position).getQuestion());
         holder.switch_set_activity_question.setChecked(questionsList.get(position).isActive());
         if (questionsList.get(position).isActive()){
@@ -53,8 +53,39 @@ public class GroupQuestionRecyclerviewAdapter extends RecyclerView.Adapter<Group
         } else {
             holder.active.setText(R.string.inactive);
             holder.active.setTextColor(ContextCompat.getColor(context,R.color.red));
-            //deleteElements(position);
         }
+
+        /*holder.switch_set_activity_question.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                FirebaseDatabase mDatabase;
+                DatabaseReference mRef;
+                mDatabase = FirebaseDatabase.getInstance();
+                mRef = mDatabase.getReference(Constant.QUESTIONS);
+
+                mRef.child(questionsList.get(position).getId()).child(Constant.ACTIVE).setValue(holder.switch_set_activity_question.isChecked());
+                holder.switch_set_activity_question.setChecked(holder.switch_set_activity_question.isChecked());
+                questionsList.get(position).setActive(holder.switch_set_activity_question.isChecked());
+
+                if (holder.switch_set_activity_question.isChecked()){
+                    holder.active.setText(R.string.active);
+                    holder.active.setTextColor(ContextCompat.getColor(context,R.color.green));
+                    deleteElements(position);
+                } else {
+                    holder.active.setText(R.string.inactive);
+                    holder.active.setTextColor(ContextCompat.getColor(context,R.color.red));
+                }
+
+                for (int i = 0; i < questionsList.size(); ++i){
+                    if (!questionsList.get(i).getId().equals(questionsList.get(position).getId())){
+                        mRef.child(questionsList.get(i).getId()).child(Constant.ACTIVE).setValue(false);
+                        questionsList.get(i).setActive(false);
+                        //listener2.updateDataSetChange(i, questionsList);
+                    }
+                }
+
+            }
+        });*/
     }
 
     private void deleteElements(final int position){
@@ -118,24 +149,67 @@ public class GroupQuestionRecyclerviewAdapter extends RecyclerView.Adapter<Group
 
                     mRef.child(questionsList.get(position).getId()).child(Constant.ACTIVE).setValue(switch_set_activity_question.isChecked());
                     switch_set_activity_question.setChecked(switch_set_activity_question.isChecked());
+                    questionsList.get(position).setActive(switch_set_activity_question.isChecked());
+
 
                     if (switch_set_activity_question.isChecked()){
                         active.setText(R.string.active);
                         active.setTextColor(ContextCompat.getColor(context,R.color.green));
-
+                        deleteElements(getAdapterPosition());
                     } else {
                         active.setText(R.string.inactive);
                         active.setTextColor(ContextCompat.getColor(context,R.color.red));
-                        deleteElements(getAdapterPosition());
                     }
 
+
+                    /*for (int i = 0; i < questionsList.size(); ++i){
+                        if (!questionsList.get(i).getId().equals(questionsList.get(position).getId())){
+                            mRef.child(questionsList.get(i).getId()).child(Constant.ACTIVE).setValue(false);
+                            questionsList.get(i).setActive(false);
+                        }
+                    }*/
+
+                    final List<Questions> questionsList1 = questionsList;
+
                     mRef2 = mDatabase.getReference(Constant.QUESTIONS);
-                    mRef2.orderByChild(Constant.GROUP_ID).equalTo(questionsList.get(position).getId()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    /*mRef2.orderByChild(Constant.GROUP_ID).equalTo(questionsList.get(position).getId()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                                 String key = snapshot.child(Constant.ID).getValue().toString();
                                 mRef2.child(key).child(Constant.ACTIVE).setValue(switch_set_activity_question.isChecked());
+                                List<Questions> questionsList2 = questionsList;
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });*/
+
+                    mRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot q : dataSnapshot.getChildren()){
+                                String group_id = q.child(Constant.GROUP_ID).getValue().toString();
+                                String id = q.child(Constant.ID).getValue().toString();
+                                if(group_id.equals(Constant.SELECTED_GROUP.getId()) && questionsList.get(position).getId().equals(id)){
+                                    mRef2.child(id).child(Constant.ACTIVE).setValue(switch_set_activity_question.isChecked());
+                                    questionsList.get(position).setActive(true);
+                                } else {
+                                    if (group_id.equals(Constant.SELECTED_GROUP.getId()) && !questionsList.get(position).getId().equals(id)) {
+                                         mRef2.child(id).child(Constant.ACTIVE).setValue(false);
+
+
+                                         for (int i = 0; i < questionsList.size(); ++i){
+                                             if (questionsList.get(i).getId().equals(id)){
+                                                 questionsList.get(i).setActive(false);
+                                                 notifyItemChanged(i, questionsList);
+                                             }
+                                         }
+                                    }
+                                }
                             }
                         }
 
@@ -144,15 +218,12 @@ public class GroupQuestionRecyclerviewAdapter extends RecyclerView.Adapter<Group
 
                         }
                     });
-
                 }
-            });
+           });
         }
     }
 
-    public void setOnClickListener(OnItemClickListener listener){
+    public void setOnClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
-
-
 }
