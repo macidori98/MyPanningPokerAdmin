@@ -155,10 +155,10 @@ public class GroupQuestionRecyclerviewAdapter extends RecyclerView.Adapter<Group
                     if (switch_set_activity_question.isChecked()){
                         active.setText(R.string.active);
                         active.setTextColor(ContextCompat.getColor(context,R.color.green));
-                        deleteElements(getAdapterPosition());
                     } else {
                         active.setText(R.string.inactive);
                         active.setTextColor(ContextCompat.getColor(context,R.color.red));
+                        deleteElements(getAdapterPosition());
                     }
 
 
